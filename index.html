@@ -4,9 +4,37 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-    <script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.7/build/pdfmake.min.js"></script>
-  <script src="/vfs_fonts.js"></script>
+    <meta
+      name="description"
+      content="Design and export Malayalam letterpad PDFs for UP Usthad Memorial Da'wa College."
+    />
+    <meta
+      name="theme-color"
+      content="#faf9f6"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#1a1815"
+      media="(prefers-color-scheme: dark)"
+    />
+    <title>Letterpad Studio · Malayalam PDF Generator</title>
+    <script>
+      // Apply the saved theme before first paint so there is no light flash.
+      (function () {
+        try {
+          var stored = localStorage.getItem("letterpad-studio:theme");
+          var dark =
+            stored === "dark" ||
+            (!stored &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.classList.add("dark");
+          document.documentElement.style.colorScheme = dark ? "dark" : "light";
+        } catch (e) {
+          /* storage blocked */
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
